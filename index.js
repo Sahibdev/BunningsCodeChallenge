@@ -23,7 +23,6 @@ try {
 
 // Get Common Catalog
 const commonCatalog = getCommonSKU(companyA, companyB);
-console.log(commonCatalog);
 
 // Convert Company A Catalog CSV to Json
 try {
@@ -47,6 +46,7 @@ await converter
   .json2csvAsync(megaList)
   .then((csv) => {
     fs.writeFileSync(CONSTANTS.OUTPUT_FILE, csv);
+    console.log(`Output Succesfully written in ${CONSTANTS.OUTPUT_FILE}`);
     return csv;
   })
   // eslint-disable-next-line no-unused-vars
