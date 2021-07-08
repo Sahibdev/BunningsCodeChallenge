@@ -1,7 +1,15 @@
-export const megalist = (jsonA, jsonB, jsonC, company) => {
-  return jsonA.map(product => {
-    const sourcename = jsonB.find(source => source.source === product.source);
-    const barcode = jsonC.find(barcode => barcode.SKU === jsonA.SKU);
-    return { ...product, sourcename: sourcename?.name, barcode: barcode?.barcode, company };
-  });
+export const joinLists = (companyA, companyB, commonCatalog) => {
+  const formatCompanyA = _format(companyA, 'A');
+  const formatCompanyB = _format(companyB, 'B');
+
+  return [
+    ...formatCompanyA,
+    ...formatCompanyB.filter((product) => !commonCatalog.has(product.SKU)),
+  ];
 };
+
+function _format(companyData, tag) {
+  return companyData.map((product) => {
+    return { ...product, Source: tag };
+  });
+}

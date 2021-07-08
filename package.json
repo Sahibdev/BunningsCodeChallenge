@@ -4,9 +4,9 @@
   "description": "testing yarn",
   "main": "index.js",
   "author": "Sahibdev Mann",
-  "license": "MIT",
+  "type": "module",
   "scripts": {
-    "start": "node merger",
+    "start": "node index.js",
     "joiner": "node joiner",
     "test": "jest --coverage"
   },
@@ -19,15 +19,10 @@
   },
   "dependencies": {
     "babel-jest": "^27.0.6",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-node": "^4.1.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.4.0",
+    "csvtojson": "^2.0.10",
     "jest": "^27.0.6",
     "jest-html-reporter": "^3.4.1",
     "json-2-csv": "^3.14.1",
-    "prettier": "^2.3.2",
     "ts-jest": "^27.0.3"
   },
   "devDependencies": {
