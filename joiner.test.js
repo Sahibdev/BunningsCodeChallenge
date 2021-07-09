@@ -1,62 +1,57 @@
 /* eslint-disable no-undef */
-import { megalist } from './joiner';
+import { joinLists } from './joiner.js';
 
 const jsonA = [
   {
-    source: 'A',
-    barcode: 'abcd',
-    productName: 'one',
-    Identifier: 'A1'
+    SKU: 'one',
+    Description: 'A1',
   },
   {
-    source: 'A',
-    productName: 'two',
-    barcode: 'asbcf',
-    Identifier: 'AB1'
+    SKU: 'two',
+    Description: 'A2',
   },
   {
-    source: 'B',
-    productName: 'three',
-    barcode: 'rdhcb12',
-    Identifier: 'AC1'
-  }
+    SKU: 'three',
+    Description: 'A3',
+  },
 ];
 
 const jsonB = [
   {
-    source: 'A',
-    name: 'GOllu'
+    SKU: 'one',
+    Description: 'B1',
   },
   {
-    source: 'B',
-    name: 'Narr'
-  }
+    SKU: 'two',
+    Description: 'B2',
+  },
 ];
+
+const set = new Set(['two']);
 
 const expectedJson = [
   {
-    source: 'A',
-    barcode: 'abcd',
-    productName: 'one',
-    Identifier: 'A1',
-    sourcename: 'GOllu'
+    SKU: 'one',
+    Description: 'A1',
+    Source: 'A',
   },
   {
-    source: 'A',
-    productName: 'two',
-    barcode: 'asbcf',
-    Identifier: 'AB1',
-    sourcename: 'GOllu'
+    SKU: 'two',
+    Description: 'A2',
+    Source: 'A',
   },
   {
-    source: 'B',
-    productName: 'three',
-    barcode: 'rdhcb12',
-    Identifier: 'AC1',
-    sourcename: 'Narr'
-  }
+    SKU: 'three',
+    Description: 'A3',
+    Source: 'A',
+  },
+  {
+    SKU: 'one',
+    Description: 'B1',
+    Source: 'B',
+  },
 ];
 
 test('Megalist joining proper value', () => {
-  expect(megalist(jsonA, jsonB)).toEqual(expectedJson);
+  expect(joinLists(jsonA, jsonB, set)).toEqual(expectedJson);
 });

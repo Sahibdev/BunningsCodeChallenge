@@ -1,81 +1,44 @@
 /* eslint-disable no-undef */
-import { merger } from './merger';
+import { getCommonSKU } from './commonSKU.js';
 
 const jsonA = [
   {
-    source: 'A',
-    productName: 'one',
-    barcode: 'abcd',
-    Identifier: 'A1'
+    SKU: 'one',
+    Barcode: 'abcd',
+    Supplier: 'A1',
   },
   {
-    source: 'A',
-    productName: 'two',
-    barcode: 'asbcf',
-    Identifier: 'AB1'
+    SKU: 'two',
+    Barcode: 'asbcf',
+    Supplier: 'AB1',
   },
   {
-    source: 'A',
-    productName: 'three',
-    barcode: 'rdhcb12',
-    Identifier: 'BC1'
-  }
+    SKU: 'three',
+    Barcode: 'rdhcb12',
+    Supplier: 'BC1',
+  },
 ];
 
 const jsonB = [
   {
-    source: 'B',
-    productName: 'one',
-    barcode: 'rafd123',
-    Identifier: 'B1'
+    SKU: 'one',
+    Barcode: 'rafd123',
+    Supplier: 'B1',
   },
   {
-    source: 'B',
-    productName: 'two',
-    barcode: 'jcns1',
-    Identifier: 'BB1'
+    SKU: 'two',
+    Barcode: 'jcns1',
+    Supplier: 'BB1',
   },
   {
-    source: 'B',
-    productName: 'three',
-    barcode: 'rdhcb12',
-    Identifier: 'BC1'
-  }
+    SKU: 'three',
+    Barcode: 'rdhcb12',
+    Supplier: 'BC1',
+  },
 ];
 
-const expectedJson = [
-  {
-    source: 'A',
-    productName: 'one',
-    barcode: 'abcd',
-    Identifier: 'A1'
-  },
-  {
-    source: 'A',
-    productName: 'two',
-    barcode: 'asbcf',
-    Identifier: 'AB1'
-  },
-  {
-    source: 'A',
-    productName: 'three',
-    barcode: 'rdhcb12',
-    Identifier: 'BC1'
-  },
-  {
-    source: 'B',
-    productName: 'one',
-    barcode: 'rafd123',
-    Identifier: 'B1'
-  },
-  {
-    source: 'B',
-    productName: 'two',
-    barcode: 'jcns1',
-    Identifier: 'BB1'
-  }
-];
+const expectedSet = new Set(['three']);
 
-test('Merger proper joining proper value', () => {
-  expect(merger(jsonA, jsonB)).toEqual(expectedJson);
+test('Should get SKU of common product', () => {
+  expect(getCommonSKU(jsonA, jsonB)).toEqual(expectedSet);
 });
