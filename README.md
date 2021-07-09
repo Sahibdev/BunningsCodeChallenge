@@ -2,7 +2,14 @@
 
 ## Setup
 
-`yarn` - Install all the dependencies for project.
+System would require node and yarn.
+
+For node: please visit https://nodejs.org/en/
+
+For yarn: please visit https://classic.yarnpkg.com/en/docs/install
+
+Once yarn is installed, Please clone the project and run `yarn` in project folder.
+This will install all the dependencies for project.
 
 ## Running
 
@@ -13,9 +20,12 @@ This will need following files to run
 - `inputFiles/barcodesB.csv`
 - `inputFiles/catalogA.csv`
 - `inputFiles/catalogB.csv`
-- `inputFiles/supplierA.csv`
-- `inputFiles/supplierB.csv`
 - `outputFile/`
+
+On Successful run, output will be:
+    `Output Succesfully written in ./output/result.csv`
+
+    The results would be saved in ./output/result.csv.
 
 ## Testing
 
